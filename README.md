@@ -1,4 +1,9 @@
 # AAE6102-Asg2
+Task 1, 4, and 5 are assisted by GenAI model, and the Chatroom files are as follows
+Task1.txt
+Task4.txt
+Task5.txt
+
 # Task 1 – Differential GNSS Positioning
 
 
