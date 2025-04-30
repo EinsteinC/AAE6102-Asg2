@@ -1,5 +1,5 @@
 # AAE6102-Asg2
-# Comparative Analysis of GNSS Positioning Techniques for Smartphone Navigation
+# Task-1 Comparative Analysis of GNSS Positioning Techniques for Smartphone Navigation
 
 This repository contains a detailed comparative analysis of various GNSS techniques used in smartphone navigation, including Differential GNSS (DGNSS), Real-Time Kinematic (RTK), Precise Point Positioning (PPP), and PPP-RTK. The analysis explores the advantages and limitations of each technique across several critical dimensions.
 
