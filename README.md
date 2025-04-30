@@ -83,8 +83,121 @@ To further clarify the differences among the four GNSS techniques, the following
 
 # Task 2 – GNSS in Urban Areas
 
+After the MATLAB codes for Assignment 1 are run, the variable `navSolutions` that store the necessary information for GNSS navigation such as satellite clock correction, psuedorange measurement and satellite position is obtained. Then, the data in `navSolutions` are further processed by executing the codes in `skymask_gnass.m` for improving the GNSS localization accuracy with Skymask information. The Skymask information is loaded in `skymask_gnass.m` with the codes:
+
+```
+...
+M = readmatrix('C:\Users\owner\Documents\MATLAB\GPS\skymask_A1_urban.csv');
+...
+```
+
+The figure of Skymask in which the blocking elevation in degree is plotted as a function of azimuth in degree is as follows:
+
+![Task2_1](https://github.com/user-attachments/assets/d0aa626f-08ab-4fbf-bd38-9d21d872aa1a)
+
+After the Skymask data is loaded, the data from GNSS satellite(s) that is/are non-line-of-sight from the GNSS receiver are removed with the following codes:
+
+```
+...
+    SkyMaskElVec = SkyMask.SkyMaskElVec - 2;
+    sol = nan(nEpoch,4);
+    for k = 1:nEpoch
+        SkyMask.rho_k = SkyMask.pr(:,k);       
+        SkyMask.az_k  = SkyMask.az(:,k);       
+        SkyMask.el_k  = SkyMask.el(:,k);       
+        SkyMask.Psat  = squeeze(SkyMask.pos(:,:,k))';  
+
+        vis = false(nSat,1);
+        w   = zeros(nSat,1);
+        for i = 1:nSat
+            a = mod(SkyMask.az_k(i),360);
+            ai = floor(a)+1; 
+            el_block = SkyMaskElVec(ai);
+            if SkyMask.el_k(i) > el_block
+                w(i) = sin(deg2rad(SkyMask.el_k(i) - el_block)) * sin(deg2rad(SkyMask.el_k(i)));
+                vis(i) = true;
+            end
+        end
+
+        idx = find(vis);
+        if numel(idx) < 4, continue; end
+        
+        x_est = [x0; y0; z0; dt0];
+        for iter = 1:10
+            m = numel(idx);
+            SkyMask.H = zeros(m,4);
+            SkyMask.r = zeros(m,1);
+            SkyMask.W = diag(w(idx));
+
+            for ii = 1:m
+                i = idx(ii);
+                rho_hat = norm(SkyMask.Psat(i,:)' - x_est(1:3));
+                pred = rho_hat + c * x_est(4);
+                SkyMask.r(ii) = SkyMask.rho_k(i) - pred;
+                u = (x_est(1:3) - SkyMask.Psat(i,:)') / rho_hat;
+                SkyMask.H(ii,1:3) = u';
+                SkyMask.H(ii,4) = -c;
+            end
+
+            dx = (SkyMask.H' * SkyMask.W * SkyMask.H) \ (SkyMask.H' * SkyMask.W * SkyMask.r);
+            x_est = x_est + dx;
+            if norm(dx) < tol, break; end
+        end
+
+        sol(k,:) = x_est';
+        x0 = x_est(1);
+        y0 = x_est(2);
+        z0 = x_est(3);
+        dt0 = x_est(4);
+    end
+...
+```
+
+Please refer to `Task2.m` for more details. The calculated user's antenna position is summarized in the below figure:
+
+![Task2_2](https://github.com/user-attachments/assets/916dae7d-94fe-4259-a1af-cca75df4ea83)
+
+The average estimated GNSS position is (22.319533180960924, 114.2077744107660), which deviates 141.647 meters from the ground truth. In task 1, the difference between the average estimated GNSS position and the ground truth is 157.9 meters, which shows that introducing skymask data in the processing of GNSS position can help improving the GNSS positioning accuracy in urban environment.
 
 # Task 3 – GPS RAIM (Receiver Autonomous Integrity Monitoring)
+
+
+The consistency of GPS signals from satellites can be checked with GPS RAIM algorithm. Users thus can be alerted with any inconsistencies of signals when RAIM compares all the received GPS signals.
+
+The navigation data is loaded with the codes `filePath = 'C:\Users\owner\Documents\MATLAB\GPS\navSolutionResults_opensky.mat';`. The RAIM is incorporated into WLS algorithm as follows:
+
+```
+        ...
+        W = eye(n); % Weighting for n-satellites
+        position = (A' * W * A) \ (A' * W * current_pseudoranges); % Position Estimate calculated with WLS
+        residuals = current_pseudoranges - A * position;
+        sigma_r2 = (residuals' * residuals) / (n - 4); % Variance
+        chi_square = (residuals' * W * residuals) / sigma_r2; % Fault Detection with Chi-Square Test
+        critical_value = chi2inv(0.99, n - 4); % Chi-square critical value is defined with alpha = 0.01
+
+        % Fault detection
+        if chi_square > critical_value
+            disp(['Epoch ', num2str(epoch), ': Fault detected in measurements!']);
+        end
+        ...
+```
+
+The above codes aims at detecting if any of the received GPS signals are inconsistent with one another.
+
+The 3D proection level is also incorporated with the following codes:
+
+```
+    k = chi2inv(0.9999999, 1); % For P_md = 10^-7 given in the hint
+    PL = k * sigma;
+```
+
+The positions of satellite within the entire time period at which the dataset recorded are as follows:
+
+![Task3](https://github.com/user-attachments/assets/fd7b86ce-fcc7-4d23-8921-b1cedb3724d3)
+
+Please refer to `Task3.m` for more details on the codes.
+
+
 
 
 
