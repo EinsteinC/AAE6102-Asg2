@@ -69,6 +69,11 @@ Each GNSS technique presents distinct advantages and limitations for smartphone 
 As smartphone GNSS hardware continues to advance and correction service networks expand, PPP-RTK is expected to play a crucial role in enabling applications such as autonomous driving, pedestrian navigation, and augmented reality on handheld devices.
 
 To further clarify the differences among the four GNSS techniques, the following table summarizes their key characteristics across critical performance dimensions.
+##AI
+The conversation with the AI is in the file Task1.txt
+
+
+
 # Task 2 – GNSS in Urban Areas
 
 
