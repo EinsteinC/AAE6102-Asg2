@@ -156,7 +156,7 @@ After the Skymask data is loaded, the data from GNSS satellite(s) that is/are no
 
 For further information, please consult `Task2.m` . The figure below provides a summary of the calculated user's antenna position, illustrating the results derived from the computations within the script. This visualization offers a clear representation of the antenna's location based on the processed data.
 
-![0002](0002.jpg)
+![0002.jpg](https://github.com/EinsteinC/AAE6102-Asg2/blob/main/0002.JPG)
 
 
 The average estimated GNSS position is (22.319533180960924, 114.2077744107660), resulting in a deviation of 141.647 meters from the ground truth. In Task 1, the discrepancy between the average estimated GNSS position and the ground truth was 157.9 meters. This indicates that incorporating Skymask data into the GNSS position processing can enhance positioning accuracy in urban environments.
@@ -195,7 +195,7 @@ The 3D proection level is also incorporated with the following codes:
 
 The positions of satellite within the entire time period at which the dataset recorded are as follows:
 
-![0003](0003.jpg)
+![0003.jpg](https://github.com/EinsteinC/AAE6102-Asg2/blob/main/0003.JPG)
 
 
 For more detailed information on the codes, please refer to `Task3.m`. This script contains the relevant implementations and logic necessary for understanding the processes and computations involved.
