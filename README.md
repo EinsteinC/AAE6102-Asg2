@@ -1,5 +1,5 @@
 # AAE6102-Asg2
-# Task-1 Comparative Analysis of GNSS Positioning Techniques for Smartphone Navigation
+# Task 1 – Differential GNSS Positioning
 
 This repository contains a detailed comparative analysis of various GNSS techniques used in smartphone navigation, including Differential GNSS (DGNSS), Real-Time Kinematic (RTK), Precise Point Positioning (PPP), and PPP-RTK. The analysis explores the advantages and limitations of each technique across several critical dimensions.
 
@@ -82,6 +82,19 @@ The analysis compares these techniques based on six critical dimensions: accurac
 
 Each GNSS technique presents distinct advantages and limitations for smartphone navigation. As smartphone GNSS hardware advances and correction service networks expand, PPP-RTK is expected to play a crucial role in enabling applications such as autonomous driving and augmented reality.
 
-## Contributing
+# Task 2 – GNSS in Urban Areas
 
-Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
+
+# Task 3 – GPS RAIM (Receiver Autonomous Integrity Monitoring)
+
+
+
+# Task 4 – LEO Satellites for Navigation
+
+
+
+
+# Task 5 – GNSS Remote Sensing
+
+
+
