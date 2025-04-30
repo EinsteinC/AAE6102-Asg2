@@ -93,7 +93,7 @@ M = readmatrix('C:\Users\owner\Documents\MATLAB\GPS\skymask_A1_urban.csv');
 
 Below is a description of how the Skymask figure is represented, where the blocking elevation in degrees is plotted against azimuth in degrees:
 
-![0001](0001.jpg)
+![0001.jpg](https://github.com/EinsteinC/AAE6102-Asg2/blob/main/0001.JPG)
 
 After the Skymask data is loaded, the data from GNSS satellite(s) that is/are non-line-of-sight from the GNSS receiver are removed with the following codes:
 
