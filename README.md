@@ -83,7 +83,7 @@ To further clarify the differences among the four GNSS techniques, the following
 
 # Task 2 – GNSS in Urban Areas
 
-After the MATLAB codes for Assignment 1 are run, the variable `navSolutions` that store the necessary information for GNSS navigation such as satellite clock correction, psuedorange measurement and satellite position is obtained. Then, the data in `navSolutions` are further processed by executing the codes in `skymask_gnass.m` for improving the GNSS localization accuracy with Skymask information. The Skymask information is loaded in `skymask_gnass.m` with the codes:
+Once the MATLAB scripts for Assignment 1 are executed, the variable `navSolutions` is generated, containing essential GNSS navigation data like satellite clock correction, pseudorange measurements, and satellite positions. Subsequently, the information within `navSolutions` undergoes additional processing by running the `skymask_gnass.m` script, which enhances GNSS localization accuracy using Skymask data. The Skymask information is incorporated in `skymask_gnass.m` through the following code:
 
 ```
 ...
@@ -91,7 +91,7 @@ M = readmatrix('C:\Users\owner\Documents\MATLAB\GPS\skymask_A1_urban.csv');
 ...
 ```
 
-The figure of Skymask in which the blocking elevation in degree is plotted as a function of azimuth in degree is as follows:
+Below is a description of how the Skymask figure is represented, where the blocking elevation in degrees is plotted against azimuth in degrees:
 
 ![0001](0001.jpg)
 
@@ -153,16 +153,18 @@ After the Skymask data is loaded, the data from GNSS satellite(s) that is/are no
 ...
 ```
 
-Please refer to `Task2.m` for more details. The calculated user's antenna position is summarized in the below figure:
 
-![Task2_2](https://github.com/user-attachments/assets/916dae7d-94fe-4259-a1af-cca75df4ea83)
+For further information, please consult `Task2.m` . The figure below provides a summary of the calculated user's antenna position, illustrating the results derived from the computations within the script. This visualization offers a clear representation of the antenna's location based on the processed data.
 
-The average estimated GNSS position is (22.319533180960924, 114.2077744107660), which deviates 141.647 meters from the ground truth. In task 1, the difference between the average estimated GNSS position and the ground truth is 157.9 meters, which shows that introducing skymask data in the processing of GNSS position can help improving the GNSS positioning accuracy in urban environment.
+![0002](0002.jpg)
+
+
+The average estimated GNSS position is (22.319533180960924, 114.2077744107660), resulting in a deviation of 141.647 meters from the ground truth. In Task 1, the discrepancy between the average estimated GNSS position and the ground truth was 157.9 meters. This indicates that incorporating Skymask data into the GNSS position processing can enhance positioning accuracy in urban environments.
 
 # Task 3 – GPS RAIM (Receiver Autonomous Integrity Monitoring)
 
 
-The consistency of GPS signals from satellites can be checked with GPS RAIM algorithm. Users thus can be alerted with any inconsistencies of signals when RAIM compares all the received GPS signals.
+The consistency of GPS signals from satellites can be verified using the GPS RAIM (Receiver Autonomous Integrity Monitoring) algorithm. This allows users to be alerted to any signal inconsistencies, as RAIM evaluates and compares all the received GPS signals to detect anomalies.
 
 The navigation data is loaded with the codes `filePath = 'C:\Users\owner\Documents\MATLAB\GPS\navSolutionResults_opensky.mat';`. The RAIM is incorporated into WLS algorithm as follows:
 
@@ -193,10 +195,10 @@ The 3D proection level is also incorporated with the following codes:
 
 The positions of satellite within the entire time period at which the dataset recorded are as follows:
 
-![Task3](https://github.com/user-attachments/assets/fd7b86ce-fcc7-4d23-8921-b1cedb3724d3)
+![0003](0003.jpg)
 
-Please refer to `Task3.m` for more details on the codes.
 
+For more detailed information on the codes, please refer to `Task3.m`. This script contains the relevant implementations and logic necessary for understanding the processes and computations involved.
 
 
 
