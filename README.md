@@ -1,9 +1,9 @@
 # AAE6102-Asg2
-Task 1, 4, and 5 are assisted by GenAI model, and the Chatroom files are as follows
+Task 1, 4, and 5 are assisted by GenAI model, and the Chatroom file and  links are as follows
 
 Task1.txt
 
-Task4.txt
+Task4: https://poe.com/s/bSRyHOKlhKenW5gWMxt8
 
 Task5.txt
 
